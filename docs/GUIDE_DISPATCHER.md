@@ -62,19 +62,9 @@ The list displays all STF bookings from clients with columns:
 | **BOOKED** | Client confirmed booking | Ready for dispatch assignment |
 | **DISPATCHED** | Assigned to LSR/rider | Rider picking up specimen |
 | **IN_TRANSIT** | Specimen in delivery | Monitor progress |
-| **PENDING_PICKUP** | Waiting for rider pickup | Follow up with LSR |
 | **BOOKING_ACCEPTED** | LSR accepted booking | Rider confirmed |
 | **FORWARDED** | Forwarded to different destination | Transferred to another LSR |
-| **PARTIALLY_DELIVERED** | Some specimens delivered | Verify remaining items |
 | **COMPLETED** | Successfully delivered | Archive booking |
-| **REJECTED** | Booking rejected by LSR | Review and reassign |
-| **RETURNED** | Specimens returned to origin | Investigate issue |
-| **CANCELLED** | Booking cancelled | Document reason |
-| **DAMAGED** | Specimens damaged in transit | Mark as damaged |
-| **LOST** | Specimens lost in transit | Alert facility immediately |
-| **ON_HOLD** | Delivery on hold | Resolve blocking issue |
-| **SUSPENDED** | Delivery suspended | Check for compliance issues |
-
 ---
 
 ## ✅ Step 2: Assign Booking to LSR

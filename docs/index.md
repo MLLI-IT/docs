@@ -1,6 +1,6 @@
 # MLLI Documentation
 
-Welcome to the official MLLI (Medical Lab Integration) documentation. Here you'll find comprehensive guides for all platform components.
+Welcome to the official SPEC documentation. Here you'll find comprehensive guides for all platform components.
 
 ---
 
