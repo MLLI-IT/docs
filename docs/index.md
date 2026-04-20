@@ -10,7 +10,7 @@ Welcome to the official SPEC documentation. Here you'll find comprehensive guide
 ### 🖥️ [Client Guide](GUIDE_CLIENT.md)
 Complete documentation for the client application and user interface.
 
-### 💵 [Cashier Guide](../GUIDE_CASHIER.md)
+### 💵 [Cashier Guide](GUIDE_CASHIER.md)
 Patient billing, charge management, and payment processing.
 
 ### 🚀 [Dispatcher Guide](GUIDE_DISPATCHER.md)
