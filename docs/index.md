@@ -22,6 +22,10 @@ Detailed information about laboratory operations and integration.
 ### 📋 [LSR Guide](GUIDE_LSR.md)
 Lab Service Request documentation and workflows.
 
+
+### 📋 [CMS Guide](GUIDE_CMS.md)
+CMS documentation and workflows.
+
 ---
 
 ## Getting Started
