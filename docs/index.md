@@ -1,35 +1,42 @@
-# MLLI Documentation
+# MLLI — SPEC Documentation
 
-Welcome to the official SPEC documentation. Here you'll find comprehensive guides for all platform components.
-
----
-
-## 📚 Available Guides
-
-
-### 🖥️ [Client Guide](GUIDE_CLIENT.md)
-Complete documentation for the client application and user interface.
-
-### 💵 [Cashier Guide](GUIDE_CASHIER.md)
-Patient billing, charge management, and payment processing.
-
-### 🚀 [Dispatcher Guide](GUIDE_DISPATCHER.md)
-Learn how to manage and configure the dispatcher system.
-
-### 🧪 [Lab Guide](GUIDE_LAB.md)
-Detailed information about laboratory operations and integration.
-
-### 📋 [LSR Guide](GUIDE_LSR.md)
-Lab Service Request documentation and workflows.
-
-
-### 📋 [CMS Guide](GUIDE_CMS.md)
-CMS documentation and workflows.
+Welcome to the official SPEC platform documentation. Select your role below to get started.
 
 ---
 
-## Getting Started
+## Platform Workflow Overview
 
-Select a guide above to get started with MLLI documentation. Each guide contains detailed instructions, best practices, and troubleshooting information.
+```mermaid
+flowchart LR
+    CLIENT["🏥 CLIENT\nCreate STF &\nBook Specimens"]
+    DISPATCHER["🚀 DISPATCHER\nAssign to\nRider / LSR"]
+    LSR["🚗 LSR\nPick Up &\nDeliver"]
+    LAB["🧪 LAB\nReceive &\nValidate"]
+    CMS["📋 CMS\nRegister Patient\n& Manage Cases"]
+    CASHIER["💵 CASHIER\nBilling &\nPayments"]
+
+    CLIENT -->|Books STF| DISPATCHER
+    DISPATCHER -->|Dispatches| LSR
+    LSR -->|Delivers| LAB
+    CLIENT --> CMS
+    CMS --> CASHIER
+```
+
+---
+
+## Available Guides
+
+| Role | Guide | Description |
+|------|-------|-------------|
+| 🏥 **Client** | [Client Guide](GUIDE_CLIENT.md) | Create STFs, add patients & procedures, book transmittals |
+| 💵 **Cashier** | [Cashier Guide](GUIDE_CASHIER.md) | Patient billing, charge management, and payment processing |
+| 🚀 **Dispatcher** | [Dispatcher Guide](GUIDE_DISPATCHER.md) | Manage and assign specimen deliveries to riders |
+| 🧪 **Lab** | [Lab Guide](GUIDE_LAB.md) | Receive, verify, and process incoming specimens |
+| 🚗 **LSR** | [LSR Guide](GUIDE_LSR.md) | Pick up and deliver specimens between facilities |
+| 📋 **CMS** | [CMS Guide](GUIDE_CMS.md) | Patient registration and transaction management |
+
+---
+
+> **New here?** Start with your role's guide. Each guide covers login, step-by-step workflows, tips, and a visual flowchart of your process.
 
 **Last Updated:** April 2026

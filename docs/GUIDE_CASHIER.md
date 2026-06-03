@@ -1,276 +1,191 @@
-# SPEC User Guide - CASHIER Role
+# SPEC Guide — CASHIER Role
 ## Patient Billing & Charge Management
 
 ---
 
-## Overview
+## Your Role
 
-As a **CASHIER** user in SPEC, your role is to:
-1. Create new patient records
-2. Register patient information
-3. Add charges (postcharge) to patient accounts
-4. Apply discounts (senior, etc.)
-5. Process payments
-6. Manage guaranteed charges (postcharge)
-7. View comprehensive billing summary
+As a **CASHIER**, you manage patient billing from registration to payment. You create patient records, post charges, apply discounts, and process payments.
 
-Your workflow: **Create Patient → Register Patient → View Patient → Add Charges → Apply Discount → Process Payment → View Summary**
+**Workflow summary:** Create Patient → View Patient → Add Charges → Apply Discount → Process Payment → View Summary
 
 ---
 
-## 🔑 Login to SPEC
+## Workflow Flowchart
 
-1. Open the SPEC application in your browser
-2. Enter your **email or username**
-3. Enter your **password**
-4. Click **"Sign In"** button
-5. You'll be taken to the main dashboard
-
----
-
-## 👥 Step 1: Create a New Patient
-
-### Navigate to Patient Section
-1. From the main dashboard, look at the **left sidebar**
-2. Click on **"Patient"** or **"CMS"** section
-3. You'll see the **Patient List** page showing all existing patients
-
-### Create New Patient
-1. Click the **"+ Create Patient"** button located in the **top-right corner**
-2. A **patient creation form** will appear with the following fields:
-
-**Patient Information Fields:**
-- **Patient First Name** * - Patient's first name
-- **Patient Last Name** * - Patient's last name
-- **Patient ID/Medical Record Number** (Optional) - Unique patient identifier
-- **Date of Birth** (Optional) - Patient's date of birth
-- **Age** (Optional) - Patient's age
-- **Gender** (Optional) - Male / Female / Other
-- **Contact Number** (Optional) - Patient's phone number
-- **Email** (Optional) - Patient's email address
-- **Address** (Optional) - Patient's residential address
-
-3. Fill in at least the **First Name** and **Last Name** (required fields marked with *)
-4. Add other information as available
-5. Click **"Register"** or **"Create Patient"** button
-6. **Success message** appears confirming patient creation
-7. Patient is now registered in the system
+```mermaid
+flowchart TD
+    A([Login to SPEC]) --> B[Create New Patient]
+    B --> C[View Patient Details]
+    C --> D[Post Charge / Add Item]
+    D --> E{Discount applicable?}
+    E -- Yes --> F[Apply Discount]
+    E -- No --> G{Guaranteed billing?}
+    F --> G
+    G -- Yes --> H[Add Guaranteed Postcharge]
+    G -- No --> I[Process Payment]
+    H --> I
+    I --> J{More items to pay?}
+    J -- Yes --> I
+    J -- No --> K[View Billing Summary]
+    K --> L([Transaction Complete ✓])
+```
 
 ---
 
-## ✅ Step 2: View Patient Details
+## Step 1 — Login
 
-### Access Patient Details
-1. From the **Patient List**, find the newly created patient
-2. Click **"View Patient"** button or link in the **Action** column for that patient
-3. **Patient Details** page opens showing:
-   - Patient information (name, ID, DOB, contact, etc.)
-   - **4 Action Buttons**: 
-     - **Postcharge** - Add charges to patient account
-     - **Discount** - Apply discounts
-     - **Payment** - Process payments
-     - **Guaranteed Postcharge** - Add guaranteed charges
-   - **Billing Summary Table** - Shows all transactions
+1. Open SPEC in your browser
+2. Enter your **email / username** and **password**
+3. Click **Sign In** → you'll land on the main dashboard
 
 ---
 
-## 💰 Step 3: Add Charges (Postcharge)
+## Step 2 — Create a New Patient
 
-### Access Postcharge Modal
-1. From the **Patient Details** page, click the **"Postcharge"** button
-2. A **modal dialog** appears with:
-   - **Available Items** list - Shows all chargeable items/services
-   - **Item Selection** section
-   - **Quantity/Amount** fields (if applicable)
-   - **Apply** button
+1. In the left sidebar, click **Patient** or **CMS**
+2. Click **+ Create Patient** (top-right corner)
+3. Fill in the patient form:
 
-### Select Items to Charge
-1. Browse the **Available Items** list showing:
-   - **Item Name** - Name of service or product
-   - **Unit Price** - Price per unit
-   - **Description** - Item details (if available)
+| Field | Required? |
+|-------|-----------|
+| First Name | ✅ Yes |
+| Last Name | ✅ Yes |
+| Patient ID / MRN | Optional |
+| Date of Birth | Optional |
+| Age | Optional |
+| Gender | Optional |
+| Contact Number | Optional |
+| Email | Optional |
+| Address | Optional |
 
-2. Click on the **item** you want to charge
-3. Item is **selected and highlighted**
-4. Specify **quantity** if applicable (default is usually 1)
-5. Review the **total charge** amount for that item
-
-### Apply Charges
-1. Click the **"Apply"** button on the modal
-2. **Success message** appears: "Charge added successfully"
-3. Modal closes automatically
-4. Charge appears in the **Billing Summary Table** showing:
-   - Item name
-   - Unit price
-   - Quantity
-   - Total amount
-   - Transaction type: "Charge"
-
-### Add Multiple Charges
-1. Repeat the **"Add Charges"** steps for each additional item
-2. Click **"Postcharge"** button again
-3. Select the next item and apply
-4. All charges accumulate in the summary table
+4. Click **Register** / **Create Patient**
+5. A success message confirms the patient was created
 
 ---
 
-## 🏷️ Step 4: Apply Discount
+## Step 3 — View Patient Details
 
-### Access Discount Modal
-1. From the **Patient Details** page, click the **"Discount"** button
-2. A **modal dialog** appears with:
-   - **Available Items** list - Shows items eligible for discount
-   - **Discount Type** dropdown selection
-   - **Discount Amount/Percentage** field
-   - **Apply** button
+1. Find the patient in the **Patient List**
+2. Click **View Patient** in the Action column
+3. The Patient Details page opens with **4 action buttons:**
 
-### Select Item and Discount Type
-1. Browse the **Available Items** list showing items that can be discounted
-2. Click on the **item** you want to apply discount to
-3. Item is **selected and highlighted**
-4. Click the **"Discount Type"** dropdown to select discount category:
-   - **Senior** - Senior citizen discount
-   - **PWD** - Person with disability discount
-   - **Student** - Student discount
-   - **Employee** - Employee discount
-   - **Other** - Other applicable discounts
+| Button | Purpose |
+|--------|---------|
+| **Postcharge** | Add charges to the account |
+| **Discount** | Apply a discount |
+| **Payment** | Process a payment |
+| **Guaranteed Postcharge** | Add a charge to be billed later |
 
-5. Enter or verify the **discount percentage/amount** automatically calculated for the selected type
-6. Review the **discounted amount** that will be deducted
-
-### Apply Discount
-1. Click the **"Apply"** button on the modal
-2. **Success message** appears: "Discount applied successfully"
-3. Modal closes automatically
-4. Discount appears in the **Billing Summary Table** showing:
-   - Item name
-   - Discount type (Senior, PWD, etc.)
-   - Discount amount
-   - Remaining amount after discount
-   - Transaction type: "Discount"
-
-### Add Multiple Discounts
-1. Repeat the **"Apply Discount"** steps for other items
-2. Click **"Discount"** button again
-3. Select different item or discount type and apply
-4. All discounts accumulate and are reflected in the summary
+The **Billing Summary Table** below shows all transactions as you work.
 
 ---
 
-## 💳 Step 5: Process Payment
+## Step 4 — Add Charges (Postcharge)
 
-### Access Payment Modal
-1. From the **Patient Details** page, click the **"Payment"** button
-2. A **modal dialog** appears with:
-   - **Available Items** list - Shows items that can be paid
-   - **Payment Amount** field
-   - **Payment Method** options (if applicable)
-   - **Apply** button
+1. Click **Postcharge**
+2. Browse the **Available Items** list (item name, unit price, description)
+3. Click the item you want to charge — it highlights
+4. Set the quantity if needed (default is 1)
+5. Click **Apply**
+6. The charge appears in the Billing Summary Table
 
-### Select Item to Pay
-1. Browse the **Available Items** list showing:
-   - Item name
-   - Current outstanding balance
-   - Amount due
-
-2. Click on the **item** you want to process payment for
-3. Item is **selected and highlighted**
-4. The **payment amount** is automatically populated with the item's balance
-5. You can modify the amount if:
-   - Making a **partial payment** - Enter desired payment amount
-   - Making a **full payment** - Amount is auto-filled
-
-### Apply Payment
-1. Review the **payment amount** to be processed
-2. Select **payment method** if available (Cash, Check, Credit Card, etc.)
-3. Click the **"Apply"** button on the modal
-4. **Success message** appears: "Payment processed successfully"
-5. Modal closes automatically
-6. Payment appears in the **Billing Summary Table** showing:
-   - Item name
-   - Payment amount
-   - Remaining balance (if partial payment)
-   - Payment method
-   - Transaction type: "Payment"
-
-### Process Multiple Payments
-1. Repeat the **"Process Payment"** steps for other items
-2. Click **"Payment"** button again
-3. Select different item and payment amount
-4. All payments are recorded in the summary
+> Repeat this step for every item you need to charge.
 
 ---
 
-## 📌 Step 6: Add Guaranteed Postcharge
+## Step 5 — Apply a Discount (if applicable)
 
-### Access Guaranteed Postcharge Modal
-1. From the **Patient Details** page, click the **"Guaranteed Postcharge"** button
-2. A **modal dialog** appears similar to the Postcharge modal:
-   - **Available Items** list - Shows chargeable items
-   - **Item Selection** section
-   - **Apply** button
+1. Click **Discount**
+2. Select the item you want to discount
+3. Choose the **Discount Type:**
 
-### Select Guaranteed Items to Charge
-1. Browse the **Available Items** list
-2. Click on the **item** you want to add as guaranteed charge
-3. Item is **selected and highlighted**
-4. Review the **charge amount**
+| Type | Description |
+|------|-------------|
+| Senior | Senior citizen discount |
+| PWD | Person with disability discount |
+| Student | Student discount |
+| Employee | Employee discount |
+| Other | Other applicable discounts |
 
-### Apply Guaranteed Charge
-1. Click the **"Apply"** button on the modal
-2. **Success message** appears: "Guaranteed charge added successfully"
-3. Modal closes automatically
-4. Charge appears in the **Billing Summary Table** showing:
-   - Item name
-   - Charge amount
-   - Transaction type: "Guaranteed Postcharge"
+4. Review the calculated discount amount
+5. Click **Apply**
+6. The discount appears in the Billing Summary Table
 
-**Note:** Guaranteed postcharges are recorded separately and may have different processing or collection procedures.
+> Repeat for other items that qualify for discounts.
 
 ---
 
-## 📊 Step 7: View Billing Summary
+## Step 6 — Process Payment
 
-### Summary Table Display
-After performing any of the above actions (charges, discounts, payments), the **Billing Summary Table** displays:
+1. Click **Payment**
+2. Browse the **Available Items** — shows outstanding balances
+3. Click the item you're collecting payment for
+4. The payment amount auto-fills with the balance
+   - **Full payment** → leave the amount as-is
+   - **Partial payment** → enter the partial amount
+5. Select payment method (Cash, Check, Credit Card, etc.) if prompted
+6. Click **Apply**
+7. Payment is recorded in the Billing Summary Table
 
-**Columns in Summary Table:**
-- **Transaction Date** - Date when charge/discount/payment was processed
-- **Item Name** - Name of the item or service
-- **Transaction Type** - Type of transaction (Charge, Discount, Payment, Guaranteed Postcharge)
-- **Amount** - Amount for each transaction
-- **Balance** - Running balance after transaction
-- **Notes** - Any additional information
-
-### Monitor Patient Account
-The summary table allows you to:
-1. **Track all transactions** - See complete history of charges, discounts, and payments
-2. **Calculate current balance** - View remaining amount due
-3. **Identify outstanding items** - See which items still need payment
-4. **Verify transactions** - Confirm all charges and adjustments are correct
-
-### Account Status
-1. Review the **Total Charges** - Sum of all postcharges
-2. Review the **Total Discounts** - Sum of all discounts applied
-3. Review the **Total Payments** - Sum of all payments received
-4. Calculate **Final Balance Due** - Total charges - discounts - payments
+> Repeat for each item being paid.
 
 ---
 
-## ✨ Quick Tips
+## Step 7 — Add Guaranteed Postcharge (if applicable)
 
-✓ **Always verify patient information** before adding charges
-✓ **Apply discounts immediately** after charges if patient qualifies
-✓ **Record payments** promptly to keep account updated
-✓ **Check billing summary regularly** to ensure accuracy
-✓ **Use guaranteed postcharge** for charges that will be billed later
-✓ **Keep transaction records** for audit and customer service purposes
+Use this for charges that will be billed separately or collected later.
+
+1. Click **Guaranteed Postcharge**
+2. Select the item from the Available Items list
+3. Click **Apply**
+4. The charge appears in the Billing Summary Table as **Guaranteed Postcharge**
+
+> **Note:** Guaranteed postcharges have different collection procedures and are tracked separately.
 
 ---
 
-## 📞 Support
+## Step 8 — View Billing Summary
 
-For additional assistance or questions about the CASHIER role, contact:
-- **System Administrator** - For system-related issues
-- **Supervisor** - For billing policy questions
-- **Support Team** - For technical assistance
+The Billing Summary Table shows all transactions in one view:
+
+| Column | Description |
+|--------|-------------|
+| Transaction Date | When the transaction was processed |
+| Item Name | Service or product name |
+| Transaction Type | Charge / Discount / Payment / Guaranteed Postcharge |
+| Amount | Transaction amount |
+| Balance | Running balance after each transaction |
+| Notes | Additional info |
+
+**Account totals to watch:**
+- **Total Charges** − Total Discounts − Total Payments = **Final Balance Due**
+
+---
+
+## Quick Tips
+
+✅ **Do:**
+- Verify patient identity before adding any charges
+- Apply discounts immediately after posting charges when the patient qualifies
+- Record payments promptly to keep the account accurate
+- Use Guaranteed Postcharge for items to be billed at a later date
+
+❌ **Don't:**
+- Add charges without confirming you have the right patient record
+- Skip the discount step for qualifying patients (Senior, PWD, etc.)
+- Leave transactions unrecorded — all billing needs an audit trail
+
+---
+
+## Need Help?
+
+| Issue | Contact |
+|-------|---------|
+| System / technical issues | System Administrator |
+| Billing policy questions | Supervisor |
+| Technical assistance | Support Team |
+
+---
+
+**Version:** 1.0 | **Last Updated:** April 2026 | **Role:** CASHIER

@@ -1,218 +1,206 @@
-# SPEC User Guide - CMS Role
+# SPEC Guide — CMS Role
 ## Patient Registration & Transaction Management
 
 ---
 
-## Overview
+## Your Role
 
-As a **CMS** (Cashier/Case Management System) user in SPEC, your role is to:
-1. Register new patients and manage existing patient records
-2. Add charges, payments, discounts, and guarantees to patient accounts
-3. Process payments from walk-in patients (cash, credit card, debit card, QR code)
-4. Manage corporate account guarantees
+As a **CMS** user, you register patients, open cases, and manage all financial transactions — charges, payments, discounts, and corporate guarantees.
 
-Your workflow: **Patient Registration → View Transactions → Manage Charges/Payments/Discounts/Guarantees**
+**Workflow summary:** Register Patient → View Transactions → Post Charges → Discount / Guarantee / Payment → Done
 
 ---
 
-## 👤 Step 1: Patient Registration
+## Workflow Flowchart
 
-### Register a New Patient
-1. From the CMS dashboard, click on **"Register Patient"** button
-2. A patient registration form will appear with fields to fill
-
-### If Patient Has Existing Record
-1. As you fill in the patient details, the system automatically searches existing records in **TASS** (Treatment And Specimen System)
-2. If a matching patient record is found, it will **auto-populate** the form with existing data
-3. Review the auto-populated information and verify it's correct
-4. To proceed, simply click **"Add Case"** button to associate a new case with this patient
-5. Click **"Save"** to complete
-
-### If Patient is New
-1. Fill in all required patient details:
-   - **Patient First Name** * (required)
-   - **Patient Last Name** * (required)
-   - **Date of Birth** (optional)
-   - **Age** (optional)
-   - **Gender** (optional)
-   - **Contact Number** (optional)
-   - **Email** (optional)
-   - **Address** (optional)
-   - Other relevant fields
-
-2. After filling all details, click **"Save"** button
-3. Patient record is created and saved in the system
-4. You'll be taken to the patient's record page
+```mermaid
+flowchart TD
+    A([Login to SPEC]) --> B{Is this patient\nalready in the system?}
+    B -- New patient --> C[Fill Registration Form]
+    B -- Existing patient --> D[System Auto-Populates\nfrom TASS]
+    D --> E[Click Add Case]
+    C --> F[Click Save]
+    E --> F
+    F --> G[View Patient Transactions]
+    G --> H[Post Charge\nSelect Procedure & Code]
+    H --> I{Additional\ntransactions needed?}
+    I -- Apply Discount --> J[Click Discount\nSelect Category\nSave]
+    I -- Corporate Billing --> K[Click Guarantee\nSelect Company\nSave]
+    I -- Collect Payment --> L[Click Payment\nSelect Method\nConfirm]
+    I -- Need to delete charge --> M{Has payment /\ndiscount / guarantee?}
+    M -- No --> N[Delete directly]
+    M -- Yes --> O[Void Transaction first\nthen Delete]
+    J --> I
+    K --> I
+    L --> I
+    N --> G
+    O --> G
+    I -- Done --> P([Transaction Complete ✓])
+```
 
 ---
 
-## 📊 Step 2: View & Manage Patient Transactions
+## Step 1 — Login
 
-### Access Patient Transactions
-1. After patient registration, click **"View"** button or link for the patient record
-2. The **Patient Transactions** page opens
-3. You'll see **four tabs** at the top:
-   - **Charges** - Medical charges/procedures added
-   - **Payment** - Payments received
-   - **Discount** - Discounts applied
-   - **Guarantee** - Guarantee/Corporate billing
-
-### Transaction View
-- Each tab displays the respective transactions for this patient
-- The transactions shown depend on what has been processed
-- View details of each transaction in the corresponding tab
+1. Open SPEC in your browser
+2. Enter your **email / username** and **password**
+3. Click **Sign In** → you'll land on the CMS dashboard
 
 ---
 
-## 💰 Step 3: Manage Charges
+## Step 2 — Register a Patient
 
-### Charges Tab Overview
-Under the **Charges** tab, you'll see **four action buttons**:
-1. **Post Charge** - Add new charges/procedures
-2. **Discount** - Apply discount to charges
-3. **Guarantee** - Add corporate/guarantee billing
-4. **Payment** - Process payment for charges
+### If the patient already exists in TASS:
 
-### Adding a New Charge (Post Charge)
-1. Click **"Post Charge"** button
-2. A form or modal will appear to add charges
-3. **Select Procedure:**
-   - Click on the procedure selection field
-   - Browse and select the applicable procedure (e.g., Lab test, Consultation, etc.)
-4. **Select Code:**
-   - Select the corresponding code for the procedure
-5. **Add & Create:**
-   - Click **"Add"** button to add the procedure
-   - Click **"Create"** button to finalize and save the charge
-6. The charge now appears in the **Charges** tab
+1. Click **Register Patient**
+2. Begin typing patient details — SPEC automatically searches **TASS** (Treatment And Specimen System)
+3. When a match appears, the form **auto-populates** with the existing data
+4. Verify the information is correct
+5. Click **Add Case** to associate a new case with this patient
+6. Click **Save**
 
----
+### If the patient is new:
 
-## 💳 Step 4: Payment Processing
+1. Click **Register Patient**
+2. Fill in the registration form:
 
-### Payment Process Overview
-This function is **applicable to walk-in patients** who need to pay immediately with:
-- **Cash**
-- **Credit Card**
-- **Debit Card**
-- **QR Code PH (Philippines)**
+| Field | Required? |
+|-------|-----------|
+| First Name | ✅ Yes |
+| Last Name | ✅ Yes |
+| Date of Birth | Optional |
+| Age | Optional |
+| Gender | Optional |
+| Contact Number | Optional |
+| Email | Optional |
+| Address | Optional |
 
-### Process Payment
-1. Click **"Payment"** button from the Charges tab
-2. A payment form will appear showing:
-   - List of charges/items to be paid
-   - Total amount due
-3. **Select Items to Pay:**
-   - Check the items/charges that the patient will pay for
-   - You can select all items or partial payment
-4. **Select Payment Method:**
-   - Choose the payment method: Cash, Credit Card, Debit Card, or QR Code PH
-5. **Process Payment:**
-   - Confirm the payment amount
-   - Click **"Confirm Payment"** or **"Pay"** button
-6. Payment is recorded and the charge status updates to **Paid**
+3. Click **Save** — the patient record is created and you're taken to their record page
 
 ---
 
-## 🎁 Step 5: Apply Discount
+## Step 3 — View Patient Transactions
 
-### Discount Application
-This function is **applicable when giving discounts** to:
-- Senior Citizens
-- PWD (Persons with Disability)
-- Indigent patients
-- Other eligible categories
+1. From the patient record, click **View**
+2. The **Patient Transactions** page opens with four tabs:
 
-### Apply Discount to Charges
-1. Click **"Discount"** button from the Charges tab
-2. A discount form or modal will appear
-3. **Select Applicable Discount:**
-   - Click on the discount selection field
-   - Browse available discount categories (Senior, PWD, Indigent, etc.)
-   - Select the appropriate discount type
-4. **Verify Discount Amount:**
-   - System will show the discount percentage or amount
-   - Review the discounted total
-5. Click **"Save"** button to apply the discount
-6. The discount is recorded in the **Discount** tab
+| Tab | What It Shows |
+|-----|--------------|
+| **Charges** | Medical charges / procedures added |
+| **Payment** | Payments received |
+| **Discount** | Discounts applied |
+| **Guarantee** | Corporate / guarantee billing |
 
 ---
 
-## 🏢 Step 6: Guarantee/Corporate Billing
+## Step 4 — Post a Charge
 
-### Guarantee Overview
-This function is **applicable to corporate accounts** where:
-- The **Corporate Company** will be billed (not the patient)
-- The patient may not pay immediately
-- The company guarantees payment for employee/member charges
+The **Charges** tab has four action buttons: **Post Charge**, **Discount**, **Guarantee**, **Payment**
 
-### Add Guarantee to Charges
-1. Click **"Guarantee"** button from the Charges tab
-2. A guarantee form will appear
-3. **Select Procedure:**
-   - Click on the procedure selection field
-   - Select the applicable procedure
-4. **Configure Corporate Billing:**
-   - Select the corporate account/company
-   - Verify the guarantee terms
-5. Click **"Save"** button to add guarantee
-6. The guarantee is recorded in the **Guarantee** tab
-7. The corporate company will receive a bill for this charge
+To add a new charge:
+
+1. Click **Post Charge**
+2. Select the procedure from the list (e.g., Lab test, Consultation)
+3. Select the corresponding code
+4. Click **Add** to add the item
+5. Click **Create** to finalize and save
+6. The charge now appears in the Charges tab
+
+> **Post a charge before applying any discount, guarantee, or payment** — all other actions depend on an existing charge.
 
 ---
 
-## 🗑️ Step 7: How to Delete Charges
+## Step 5 — Process Payment
 
-### Deletion Rules
-The system has specific rules about when charges can be deleted:
+Applicable for **walk-in patients** paying immediately.
 
-### ✅ Can Delete
-- Charges that have **NOT been paid yet**
-- Charges with **NO discount** applied
-- Charges with **NO guarantee** applied
-- Only delete if transaction is in initial/open status
+**Accepted payment methods:** Cash · Credit Card · Debit Card · QR Code PH
 
-### ❌ Cannot Delete Directly
-- Charges that have been **PAID** (payment received)
-- Charges with **DISCOUNT** applied
-- Charges with **GUARANTEE** applied
+1. Click **Payment** (in the Charges tab)
+2. The payment form shows all charges with amounts due
+3. Check the items the patient is paying for (all or partial)
+4. Select the payment method
+5. Confirm the payment amount
+6. Click **Confirm Payment** / **Pay**
+7. Charge status updates to **Paid**
 
-### Procedure to Delete Protected Charges
-1. If a charge has Payment, Discount, or Guarantee applied:
-   - You **MUST first VOID the transaction**
-   - Click **"Void Transaction"** button
-   - Confirm the void action
+---
+
+## Step 6 — Apply a Discount
+
+Applicable for patients in eligible categories.
+
+**Eligible categories:** Senior Citizens · PWD · Indigent · Others
+
+1. Click **Discount** (in the Charges tab)
+2. Select the charge you want to discount
+3. Choose the applicable discount category
+4. Review the calculated discount amount
+5. Click **Save**
+6. Discount appears in the **Discount** tab
+
+---
+
+## Step 7 — Add a Guarantee (Corporate Billing)
+
+Applicable when a **corporate company** will be billed instead of the patient.
+
+1. Click **Guarantee** (in the Charges tab)
+2. Select the applicable procedure
+3. Select the corporate account / company
+4. Verify the guarantee terms
+5. Click **Save**
+6. Guarantee appears in the **Guarantee** tab
+7. The company will receive a bill for this charge
+
+---
+
+## Step 8 — Delete a Charge
+
+The system enforces rules about when a charge can be deleted:
+
+| Charge State | Can You Delete? | How |
+|-------------|----------------|-----|
+| No payment, discount, or guarantee | ✅ Yes | Click Delete directly |
+| Has payment applied | ❌ Not directly | Void first, then delete |
+| Has discount applied | ❌ Not directly | Void first, then delete |
+| Has guarantee applied | ❌ Not directly | Void first, then delete |
+
+**To delete a protected charge:**
+1. Click **Void Transaction** → confirm
 2. After voiding, the charge reverts to initial status
-3. Now you can click **"Delete"** button to remove the charge
-4. Confirm the deletion
-
-### Summary
-- **No payment/discount/guarantee?** → Delete directly
-- **Has payment/discount/guarantee?** → Void first, then delete
+3. Now click **Delete** → confirm
 
 ---
 
-## ✨ Quick Reference
+## Quick Reference
 
 | Action | Walk-in? | Corporate? | Notes |
-|--------|----------|-----------|-------|
-| Register Patient | Yes | Yes | Fill new details or use existing record |
-| Post Charge | Yes | Yes | Required first step |
-| Payment | Yes | No | Walk-in patients pay immediately |
-| Discount | Yes | Yes | For eligible categories (Senior, PWD, etc.) |
-| Guarantee | No | Yes | For corporate employees/members |
-| Delete Charge | Yes* | Yes* | Cannot delete if paid/discounted/guaranteed |
+|--------|:--------:|:---------:|-------|
+| Register Patient | ✅ | ✅ | Auto-populates for existing patients |
+| Post Charge | ✅ | ✅ | Required before all other actions |
+| Payment | ✅ | ❌ | Walk-in patients only |
+| Discount | ✅ | ✅ | Senior, PWD, Indigent, etc. |
+| Guarantee | ❌ | ✅ | Corporate accounts only |
+| Delete Charge | ✅* | ✅* | Only if no payment / discount / guarantee |
 
-*Can delete only if no payment, discount, or guarantee applied
+*Void the transaction first if any of those have been applied.
 
 ---
 
-## 📌 Tips & Best Practices
+## Tips
 
-1. **Always verify patient information** before registering a new patient
-2. **Check existing records first** - System auto-populates for known patients
-3. **Add charges first** - All other operations (payment, discount, guarantee) depend on charges
-4. **Process payments immediately** - For walk-in patients to complete transaction
-5. **Review discount eligibility** - Only apply discounts to qualified categories
-6. **Void before deleting** - If a charge has payment/discount/guarantee, void it first
-7. **Keep records accurate** - Proper documentation ensures billing correctness
+✅ **Do:**
+- Check for existing records before registering — the system auto-populates for known patients
+- Post charges first — payment, discount, and guarantee all require a charge to exist
+- Process walk-in payments immediately to keep accounts current
+- Void before deleting any protected charge
+
+❌ **Don't:**
+- Create duplicate patient records — search first
+- Apply discounts to non-qualifying patients
+- Try to delete a paid charge without voiding it first
+
+---
+
+**Version:** 1.0 | **Last Updated:** April 2026 | **Role:** CMS

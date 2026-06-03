@@ -1,391 +1,237 @@
-# SPEC User Guide - LSR Role
-## Logistics Service Representative (Rider/Courier)
+# SPEC Guide — LSR Role
+## Logistics Service Representative (Rider / Courier)
 
 ---
 
-## Overview
+## Your Role
 
-As an **LSR (Logistics Service Representative)** in SPEC, you are a **rider/courier** responsible for:
-1. Accept bookings dispatched by the dispatcher
-2. Pick up specimens from origin facility
-3. Record compartment temperatures and arrival/departure times
-4. Accept or reject specimens based on quality
-5. Transport specimens to destination facility
-6. Record delivery information and temperatures
-7. Complete delivery documentation
+As an **LSR (Logistics Service Representative)**, you are the courier responsible for picking up specimens at the origin facility and delivering them to the destination (lab). You must handle specimens carefully, record temperatures, and document every step.
 
-Your workflow: **Accept Booking → Go to Origin → Record & Accept Specimens → Transport → Deliver at Destination**
+**Workflow summary:** Accept Booking → Travel to Origin → Record & Accept Specimens → Transport → Deliver at Destination
 
 ---
 
-## 🔑 Login to SPEC
+## Workflow Flowchart
 
-1. Open the SPEC application in your browser
-2. Enter your **email or username**
-3. Enter your **password**
-4. Click **"Sign In"** button
-5. You'll be taken to your LSR dashboard
-
----
-
-## 📊 Dashboard Overview
-
-Your dashboard displays:
-- **Incoming Bookings** - Dispatcher assigned to you
-- **Pending Acceptance** - New bookings waiting for your response
-- **In Progress** - Bookings you're currently working on
-- **Delivered** - Completed deliveries
-- **Quick Stats** - Your daily performance
-
----
-
-## 🎯 Step 1: View Incoming Bookings
-
-### Navigate to Your Bookings
-1. From the main dashboard, look at the **left sidebar**
-2. Click on your **LSR section** or **"My Bookings"**
-3. You'll see the **Incoming Bookings List**
-
-### Understand Booking List
-
-The list shows bookings dispatcher assigned to you:
-- **Booking ID** - Unique transmittal reference
-- **Origin Facility** - Where you'll pick up specimens
-- **Destination Facility** - Where you'll deliver
-- **Patient Count** - Number of patients in this booking
-- **Status** - Current state (Pending Acceptance, etc.)
-- **Assigned Date/Time** - When dispatcher assigned to you
-- **Action Buttons** - Accept/View options
+```mermaid
+flowchart TD
+    A([Login to SPEC]) --> B[View Incoming Bookings]
+    B --> C[Review Booking Details]
+    C --> D[Accept Booking]
+    D --> E[Travel to Origin Facility]
+    E --> F[Record Arrival Time\n& Compartment Temperatures]
+    F --> G[Inspect Each Specimen]
+    G --> H{Specimen OK?}
+    H -- Yes --> I[Click ACCEPT\nAssign Compartment\nOptional Remarks]
+    H -- No --> J[Click REJECT\nSelect Reason\nAdd Notes]
+    I --> K{More specimens?}
+    J --> K
+    K -- Yes --> G
+    K -- No --> L[Record Departure Time]
+    L --> M[Mark Out of Delivery]
+    M --> N[Transport to Destination]
+    N --> O[Arrive at Destination]
+    O --> P[Record Delivery Temps\n& Arrival Time]
+    P --> Q[Hand Over Specimens\nGet Confirmation]
+    Q --> R[Mark Delivery Complete]
+    R --> S([Booking Complete ✓])
+```
 
 ---
 
-## ✅ Step 2: Accept Booking
+## Step 1 — Login
 
-### Review Booking Details
-1. From the incoming bookings list, click on a booking to view details
-2. See:
-   - **Booking ID** - Reference number
-   - **Origin Facility** - Pickup address & contact
-   - **Destination Facility** - Delivery address & contact
-   - **Patients** - Who the specimens are from
-   - **Procedures** - What tests are ordered
-   - **Special Notes** - Any special instructions from dispatcher
+1. Open SPEC in your browser
+2. Enter your **email / username** and **password**
+3. Click **Sign In** → you'll land on your LSR dashboard
 
-### Accept the Booking
-1. Click the **"Accept Booking"** button
-2. System confirms acceptance
-3. Booking status changes to **"Booking Accepted"**
-4. You're now ready to proceed to origin facility
+**Dashboard shows:**
+- **Incoming Bookings** — Dispatcher has assigned to you
+- **Pending Acceptance** — Waiting for your response
+- **In Progress** — Active deliveries
+- **Delivered** — Completed today
 
 ---
 
-## 🚗 Step 3: Travel to Origin Facility
+## Step 2 — Accept a Booking
 
-### Before You Leave
-1. Ensure you have your **delivery vehicle** with compartments:
-   - **Refrigerated Compartment** (ref temperature, typically 2-8°C)
-   - **Freezer Compartment** (freezer temperature, typically -20°C or lower)
-   - **Room Temperature Compartment** (room temp, typically 20-25°C)
-2. Check that each compartment is working properly
-3. Record initial temperatures of each compartment
+1. In the left sidebar, click **My Bookings**
+2. The Incoming Bookings list shows all bookings assigned to you
+3. Click on a booking to review:
+   - Origin Facility (pickup address)
+   - Destination Facility (delivery address)
+   - Patient count / Procedure list
+   - Special notes from dispatcher
+4. Click **Accept Booking**
+5. Status changes to **Booking Accepted**
 
-### Drive to Origin Facility
-- Navigate to **Origin Facility address** shown in booking
-- Allow time for parking and facility check-in
-- Bring your **LSR ID** for identification
-
----
-
-## 📋 Step 4: Record at Origin Facility - Temperatures & Times
-
-### Upon Arrival at Origin Facility
-1. Open the booking in SPEC app or system
-2. Navigate to **"Origin Facility Recording"** section
-
-### Record Compartment Temperatures
-Record the current temperature of each compartment you brought:
-
-1. **Refrigerated Compartment Temperature**
-   - Current temperature (should be 2-8°C)
-   - Record in: **REF TEMP**
-
-2. **Freezer Compartment Temperature**
-   - Current temperature (should be -20°C or lower)
-   - Record in: **FREEZER TEMP**
-
-3. **Room Temperature Compartment Temperature**
-   - Current temperature (should be 20-25°C)
-   - Record in: **ROOM TEMP**
-
-### Record Arrival & Departure Times
-1. **PICKUP ARR** (Pickup Arrival) - Click and record time you arrived
-2. **PICKUP DEP** (Pickup Departure) - To be filled when you leave
+> **Only accept when you're ready to leave for pickup immediately.**
 
 ---
 
-## 📦 Step 5: Accept or Reject Specimens
+## Step 3 — Prepare Your Vehicle
 
-### View Specimen List
-In the same booking screen, you'll see a **table below showing specimens** to pick up:
+Before heading out, verify your delivery vehicle compartments:
 
-Each row shows:
-- **Specimen ID** - Unique identifier
-- **Patient Name** - Who it's from
-- **Procedure** - What test it's for
-- **Specimen Type** - E.g., Whole Blood, Serum, Urine
-- **Required Compartment** - Where it should go (Ref/Freezer/Room Temp)
-- **Quantity** - How much is needed
-- **Condition** - Requested specimen condition (Collected, Ready, etc.)
-- **Action Buttons** - ACCEPT or REJECT
+| Compartment | Required Temperature |
+|-------------|---------------------|
+| Refrigerated | 2–8°C |
+| Freezer | −20°C or lower |
+| Room Temperature | 20–25°C |
 
-### Inspect Each Specimen
-For each specimen, physically check:
-1. **Label Integrity** - Is label legible and intact?
-2. **Container** - Is container appropriate for specimen type?
-3. **Quantity** - Is there sufficient volume?
-4. **Color/Appearance** - Does it look normal for that specimen type?
-5. **Temperature** - Has it been stored properly?
-6. **Expiration** - If applicable, is it still valid?
-
-### ACCEPT Specimen
-1. Click the **"ACCEPT"** button for that specimen
-2. A **Remarks Modal** appears with two options:
-
-   **Option 1: Add Remarks (Optional)**
-   - Add any notes about the specimen
-   - E.g., "Specimen in good condition", "Minor label damage but readable"
-   - Click **"Add Remarks"** field and type notes
-
-   **Option 2: Select Compartment Assignment**
-   - Choose which compartment to place this specimen:
-     - **Refrigerated Compartment** (2-8°C)
-     - **Freezer Compartment** (-20°C or lower)
-     - **Room Temperature Compartment** (20-25°C)
-   - System default may suggest based on specimen type
-   - You can override if needed
-
-3. Click **"Confirm Accept"** button
-4. Specimen status changes to **ACCEPTED**
-5. Modal closes and returns to specimen list
-
-### REJECT Specimen
-1. Click the **"REJECT"** button for that specimen
-2. A **Rejection Modal** appears asking:
-   - **Reason for Rejection** (dropdown):
-     - "Damaged/Leaked"
-     - "Insufficient Volume"
-     - "Wrong Specimen Type"
-     - "Label Illegible"
-     - "Contaminated"
-     - "Improper Storage"
-     - "Other"
-   - **Detailed Notes** - Explain the issue
-3. Click **"Confirm Rejection"** button
-4. Specimen status changes to **REJECTED**
-5. Notification sent to dispatcher
-
-### Repeat for All Specimens
-Continue accepting/rejecting each specimen in the table until all are reviewed
+Bring your **LSR ID** for facility check-in.
 
 ---
 
-## 📍 Step 6: Record Departure Time
+## Step 4 — Arrive at Origin Facility
 
-### Before Leaving Origin Facility
-1. Ensure all accepted specimens are properly placed in assigned compartments
+1. Open the booking in SPEC
+2. Navigate to **Origin Facility Recording**
+3. Record **PICKUP ARR** (arrival time)
+4. Record current compartment temperatures:
+
+| Field | What to Record |
+|-------|---------------|
+| REF TEMP | Refrigerator compartment temperature |
+| FREEZER TEMP | Freezer compartment temperature |
+| ROOM TEMP | Room temperature compartment |
+
+---
+
+## Step 5 — Accept or Reject Each Specimen
+
+You'll see a specimen table listing every specimen to collect. For each one:
+
+**Physically inspect:**
+- Label — legible and intact?
+- Container — correct type for specimen?
+- Volume — sufficient quantity?
+- Color / appearance — looks normal?
+- Temperature — stored properly?
+
+### To ACCEPT a specimen:
+
+1. Click **ACCEPT**
+2. In the modal:
+   - Optionally add remarks (e.g., "Minor label smudge but readable")
+   - Select the compartment to store it in (Ref / Freezer / Room Temp)
+3. Click **Confirm Accept**
+4. Status changes to **ACCEPTED**
+
+### To REJECT a specimen:
+
+1. Click **REJECT**
+2. Select a rejection reason:
+
+| Reason | When to Use |
+|--------|-------------|
+| Damaged / Leaked | Container broken or leaking |
+| Insufficient Volume | Not enough specimen for the test |
+| Wrong Specimen Type | Doesn't match what was ordered |
+| Label Illegible | Can't read patient name or ID |
+| Contaminated | Visible contamination |
+| Improper Storage | Not stored at required temperature |
+| Other | Explain in notes |
+
+3. Add detailed notes explaining the issue
+4. Click **Confirm Rejection** — dispatcher is notified automatically
+
+Repeat for every specimen in the table.
+
+---
+
+## Step 6 — Record Departure & Leave
+
+1. Place all accepted specimens in their assigned compartments
 2. Close and secure all compartment lids
-3. In the booking details, record **PICKUP DEP** (Pickup Departure):
-   - Click time field and select current time
-   - Confirm you're leaving origin facility
-
-### Document as "Out of Delivery"
-1. After all specimens accepted and packed, click **"Mark as Out of Delivery"** button
-2. Or status may auto-change to **"OUT_OF_DELIVERY"** or **"IN_TRANSIT"**
-3. System records that specimens are now in transport
+3. Record **PICKUP DEP** (departure time) in SPEC
+4. Click **Mark as Out of Delivery**
+5. Status changes to **OUT_OF_DELIVERY / IN_TRANSIT**
 
 ---
 
-## 🚗 Step 7: Transport to Destination Facility
+## Step 7 — Transport to Destination
 
-### During Transport
-- Drive safely to destination facility address
-- Maintain proper temperature in compartments
-- Avoid temperature fluctuations
-- Monitor vehicle dashboard for warnings
-- Keep specimens secure during transport
-
-### Track Time
-- Note departure time from origin
-- Monitor travel time (typical 30 min to several hours depending on distance)
+During transport:
+- Maintain proper temperatures in all compartments
+- Keep compartments sealed
+- Drive safely — specimens are sensitive
+- Contact dispatcher immediately if any issue arises
 
 ---
 
-## 📍 Step 8: Arrive at Destination Facility
+## Step 8 — Arrive at Destination & Deliver
 
-### Upon Arrival
-1. Verify you're at correct **Destination Facility address**
-2. Check-in with receiving staff
-3. Notify dispatcher if any issues during transit
-4. Prepare to offload specimens
+1. Verify you're at the correct **Destination Facility**
+2. Check in with receiving staff
+3. Open the booking in SPEC → navigate to **Destination Facility Recording**
+4. Record arrival temperatures:
 
-### Record Delivery Information
-1. Open the booking in SPEC app
-2. Navigate to **"Destination Facility Recording"** section
+| Field | What to Record |
+|-------|---------------|
+| REF TEMP | Refrigerator temperature on arrival |
+| FREEZER TEMP | Freezer temperature on arrival |
+| ROOM TEMP | Room temp compartment on arrival |
 
-### Record Delivery Temperatures
-Record the current temperature of each compartment as you arrive:
-
-1. **DELIVERY ARR Temperatures:**
-   - **REF TEMP** - Current refrigerator temperature
-   - **FREEZER TEMP** - Current freezer temperature  
-   - **ROOM TEMP** - Current room temperature compartment
-
-2. **DELIVERY ARR** (Delivery Arrival Time)
-   - Record time you arrived at destination facility
-
-### Document Delivery Details
-1. **Condition Upon Arrival** - Any issues with specimens?
-2. **Temperature Status** - All compartments in acceptable range?
-3. **Any Spillage or Damage** - Problems during transit?
-4. Click **"Save Delivery Recording"** button
+5. Record **DELIVERY ARR** (arrival time)
+6. Hand over specimens to lab staff — verify count and IDs together
+7. Obtain confirmation (signature or timestamp) from receiving staff
+8. Click **Mark Delivery Complete**
+9. Status changes to **DELIVERED / COMPLETED**
 
 ---
 
-## ✅ Step 9: Complete Delivery at Destination
+## Handling Problems
 
-### Hand Over Specimens
-1. With destination facility staff, verify specimen count and IDs
-2. Show specimens in proper compartments
-3. Ensure all specimens accounted for
-
-### Get Confirmation
-1. Destination facility staff should confirm receipt
-2. You may need signature/timestamp from receiving staff
-3. Keep proof of delivery for your records
-
-### Mark Delivery Complete
-1. In SPEC app, click **"Mark Delivery Complete"** button
-2. Or **"Confirm Delivery"** button
-3. Status changes to **DELIVERED** or **COMPLETED**
-4. Booking is now closed
+| Problem | Action |
+|---------|--------|
+| Compartment temperature out of range at origin | Document it, notify dispatcher — do not accept specimens if unsafe |
+| Specimen leaks during transport | Isolate it, note it in SPEC, contact dispatcher |
+| Vehicle breaks down | Maintain temperature, contact dispatcher ASAP, document delay |
+| Wrong delivery address | Contact dispatcher before going anywhere else |
 
 ---
 
-## 📋 Common Tasks for LSR
+## Notifications Reference
 
-### Task 1: Check Your Daily Bookings
-1. Go to dashboard
-2. Click **"My Bookings"** or **"Today's Deliveries"**
-3. See all bookings assigned for today
-4. Accept those you're ready to handle
-
-### Task 2: Reject Specimen Quickly
-1. In specimen list, click **"REJECT"** button
-2. Select reason from dropdown
-3. Type brief note
-4. Click "Confirm Rejection"
-5. Specimen marked rejected and dispatcher notified
-
-### Task 3: Add Remarks While Accepting
-1. Click **"ACCEPT"** button for specimen
-2. In modal, click **"Add Remarks"** field
-3. Type your notes (e.g., "Small crack in tube but sealed")
-4. Select compartment
-5. Click "Confirm Accept"
-
-### Task 4: If Compartment Temperature Wrong
-1. Record compartment temperature at origin
-2. If temperature is out of range:
-   - Document in notes
-   - Notify dispatcher immediately
-   - May need to refuse booking or delay pickup
-   - Don't accept specimens if conditions unsafe
-
-### Task 5: Handle Emergency/Problem During Transport
-1. If vehicle breaks down:
-   - Try to maintain temperature
-   - Contact dispatcher ASAP
-   - Get replacement vehicle if needed
-   - Document delay in app
-
-2. If specimen leaks/damages:
-   - Isolate damaged specimen
-   - Note in app remarks
-   - Contact dispatcher
-   - May need to return to origin
-
----
-
-## 📱 Notifications You May Receive
-
-| Notification | Meaning | Your Action |
-|--------------|---------|-------------|
+| Notification | What It Means | Your Action |
+|-------------|--------------|-------------|
 | **Booking Assigned** | Dispatcher sent you a booking | Review and accept |
-| **Accept Reminder** | Booking waiting for your acceptance | Accept ASAP |
-| **Navigate to Origin** | Accepted booking, time to go pick up | Go to origin facility |
-| **Record Temperatures** | At origin, record compartment temps | Fill in temperature fields |
-| **Accept Specimens** | Physical specimens arrived | Review and accept/reject |
-| **Out of Delivery** | Specimens packed and ready | Mark as out of delivery |
-| **Delivery Complete** | Arrived at destination | Record delivery temps & confirm |
-| **Delivery Confirmed** | Destination accepted specimens | Booking is complete |
+| **Accept Reminder** | Booking still waiting | Accept ASAP |
+| **Record Temperatures** | At origin facility | Fill temperature fields |
+| **Out of Delivery** | Ready to transport | Mark as out of delivery |
+| **Delivery Complete** | Arrived at destination | Record temps and confirm |
 
 ---
 
+## Performance Targets
 
-## 📊 Performance Metrics You're Measured On
-
-Track your performance:
-
-| Metric | Target | What It Means |
-|--------|--------|--------------|
-| **Bookings Accepted Per Day** | 8-12 | How many deliveries you complete |
-| **On-Time Delivery** | 95%+ | Deliveries completed by scheduled time |
-| **Specimen Rejection Rate** | < 2% | Lower is better (fewer quality rejections) |
-| **Temperature Compliance** | 100% | All compartments maintained properly |
-| **Zero Damage Rate** | 100% | No specimens lost/damaged in transit |
-| **Customer Satisfaction** | 4.5+/5 | Feedback from facilities |
+| Metric | Target |
+|--------|--------|
+| On-Time Delivery | ≥ 95% |
+| Specimen Rejection Rate | < 2% |
+| Temperature Compliance | 100% |
+| Zero Damage Rate | 100% |
+| Customer Satisfaction | ≥ 4.5 / 5 |
 
 ---
 
-## 💡 LSR Tips
+## Tips
 
-✅ **DO:**
+✅ **Do:**
 - Accept bookings only when ready to leave immediately
-- Inspect ALL specimens carefully
-- Record ALL temperatures accurately
-- Communicate with dispatcher about any issues
-- Keep compartments sealed during transport
-- Document everything in app
-- Drive safely and follow traffic rules
-- Confirm receipt with destination facility
+- Inspect every specimen before accepting
+- Record all times and temperatures accurately
+- Keep compartments sealed during transit
+- Confirm receipt with destination staff
 
-❌ **DON'T:**
-- Accept booking then delay going to origin
-- Accept damaged/questionable specimens
-- Leave compartments open during transport
-- Skip temperature recordings
-- Drive recklessly with specimens
-- Forget to record times (PICKUP ARR/DEP, DELIVERY ARR)
-- Deliver to wrong facility
-- Leave without confirmation from destination
+❌ **Don't:**
+- Accept then delay going to origin
+- Accept damaged or questionable specimens
+- Leave compartment lids open during transit
+- Skip recording PICKUP ARR/DEP or DELIVERY ARR
+- Leave the destination without a confirmation
 
 ---
 
-
-## 👤 Need More Help?
-
-- **Dispatcher Guide**: See GUIDE_DISPATCHER.md (understand how you got assigned)
-- **CLIENT Guide**: See GUIDE_CLIENT.md (understand origin of bookings)
-- **LAB Guide**: See GUIDE_LAB.md (understand where specimens go)
-- **System Overview**: See GUIDE_OVERVIEW.md
-- **Quick Reference**: See QUICK_REFERENCE.md
-- **System Support**: Contact your LSR supervisor or administrator
-
----
-
-**For Questions or Feedback:**
-- Contact: lsr-support@spec-system.com
-- Internal Chat: #spec-lsr-support
-- Documentation: /guide/
-
----
+**Version:** 1.0 | **Last Updated:** April 2026 | **Role:** LSR
