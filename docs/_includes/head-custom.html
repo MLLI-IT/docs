@@ -1,8 +1,32 @@
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
+  // Disable auto-start so Mermaid doesn't scan before we convert the code blocks
+  mermaid.initialize({ startOnLoad: false, theme: 'default' });
+
   document.addEventListener('DOMContentLoaded', function () {
-    // Jekyll renders ```mermaid blocks as <pre><code class="language-mermaid">
-    // Mermaid.js needs <div class="mermaid"> — swap them before initializing
+
+    // ── 1. Welcome banner ──────────────────────────────────────────────────
+    // The Primer theme renders the repo name as a plain <h1><a>docs</a></h1>.
+    // Replace it with a styled banner using the title from _config.yml.
+    var siteTitle = document.querySelector('.container-lg > h1:first-child');
+    if (siteTitle) {
+      var banner = document.createElement('div');
+      banner.innerHTML =
+        '<div style="background:linear-gradient(135deg,#1565C0 0%,#0D47A1 100%);'
+        + 'color:#fff;padding:2.5rem 2rem;border-radius:12px;margin-bottom:2.5rem;'
+        + 'text-align:center;box-shadow:0 4px 20px rgba(21,101,192,.35);">'
+        + '<div style="font-size:2.8rem;margin-bottom:.4rem;">🏥</div>'
+        + '<h1 style="margin:0;font-size:1.9rem;font-weight:700;color:#fff;border:none;'
+        + 'padding:0;background:none;box-shadow:none;">MLLI SPEC Platform</h1>'
+        + '<p style="margin:.5rem 0 0;font-size:1rem;color:rgba(255,255,255,.85);">'
+        + 'Staff Documentation &amp; User Guides</p>'
+        + '</div>';
+      siteTitle.parentNode.replaceChild(banner, siteTitle);
+    }
+
+    // ── 2. Mermaid flowcharts ──────────────────────────────────────────────
+    // Jekyll renders ```mermaid as <pre><code class="language-mermaid">.
+    // Mermaid.js needs <div class="mermaid"> — convert before calling run().
     document.querySelectorAll('pre code.language-mermaid').forEach(function (code) {
       var pre = code.parentNode;
       var div = document.createElement('div');
@@ -10,9 +34,10 @@
       div.textContent = code.textContent;
       pre.parentNode.replaceChild(div, pre);
     });
-    mermaid.initialize({ startOnLoad: true, theme: 'default' });
+
+    mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
   });
 </script>
 <style>
-  .mermaid { margin: 1.5em 0; text-align: center; }
+  .mermaid { margin: 2rem 0; text-align: center; overflow-x: auto; }
 </style>
