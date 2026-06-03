@@ -230,8 +230,15 @@ input[type=checkbox] { margin-right: .35rem; }
   text-align: center;
   margin: 1.2rem 0;
   page-break-inside: avoid;
+  width: 100%;
+  overflow: hidden;
 }
-.mermaid svg { max-width: 100% !important; height: auto !important; }
+.mermaid svg {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
 
 /* ── Print ── */
 @media print {
@@ -265,6 +272,9 @@ async function main() {
     const page = await browser.newPage();
     page.on('console', msg => process.stdout.write(`  [page] ${msg.text()}\n`));
 
+    // A4 at 96 dpi = 794 px — match viewport to page width so % widths resolve correctly
+    await page.setViewport({ width: 794, height: 1123 });
+
     console.log('📄 Loading content (fetching Mermaid.js from CDN)...');
     await page.setContent(html, { waitUntil: 'networkidle2', timeout: 60000 });
 
@@ -280,8 +290,30 @@ async function main() {
         div.textContent = code.textContent;
         code.parentNode.parentNode.replaceChild(div, code.parentNode);
       });
-      window.mermaid.initialize({ startOnLoad: false, theme: 'default' });
+
+      // useMaxWidth tells Mermaid to render SVGs with width="100%" instead of px
+      window.mermaid.initialize({
+        startOnLoad: false,
+        theme: 'default',
+        flowchart:  { useMaxWidth: true, htmlLabels: true },
+        sequence:   { useMaxWidth: true },
+        er:         { useMaxWidth: true },
+        gantt:      { useMaxWidth: true },
+      });
       await window.mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+
+      // Belt-and-suspenders: strip any fixed px width/height Mermaid left on SVGs
+      document.querySelectorAll('.mermaid svg').forEach(svg => {
+        const w = parseFloat(svg.getAttribute('width')  || '0');
+        const h = parseFloat(svg.getAttribute('height') || '0');
+        // Preserve proportions via viewBox before removing fixed dimensions
+        if (w > 0 && h > 0 && !svg.getAttribute('viewBox')) {
+          svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+        }
+        svg.removeAttribute('width');
+        svg.removeAttribute('height');
+        svg.style.cssText = 'width:100%;max-width:100%;height:auto;display:block;';
+      });
     });
 
     // Small buffer for SVG paint to complete
